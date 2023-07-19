@@ -6,6 +6,8 @@ fn main() {
     // However, patterns in Rust are far more powerful than these switch statements in C++. This
     // chapter explains some of the reasons why.
     all_places_patterns_can_be_used();
+    refutability_whether_a_pattern_might_fail_to_match();
+    pattern_syntax();
 }
 
 fn all_places_patterns_can_be_used() {
@@ -65,4 +67,30 @@ fn all_places_patterns_can_be_used() {
 
     let stuff = ('a', 'b');
     printing_stuff(&stuff);
+}
+
+fn refutability_whether_a_pattern_might_fail_to_match() {
+    //There are two types of patterns in rust.
+    // Refutable: These patterns cannot fail to match, `let x = 5` for example will always match.
+    // Irrefutable: These patterns can fail to match, `if let Some(x) = var` for example could be
+    //  None.
+    // `let` and `for` only accept irrefutable patterns.
+    // `if let` and `while let` accept refutable patterns as well.
+
+    //The main point of this section is to show that irrefutable and refutable patterns cannot be
+    // interchanged. The example is that the line `let Some(x) = var` will not compile because `let`
+    // only takes refutable patterns. However, something else interesting is that syntactically it
+    // makes a little more sense to me now. When I have a line of `if let Some(x) = var` this is
+    // actually setting a variable x, I always thought of it as a comparison, but now I understand
+    // why the syntax was set up this way. This actually makes a lot more sense.
+
+    //Using an irrefutable pattern with `if let` will work, but produce an warning.
+    // if let x = 5 {
+    //     println!("x: {x}");
+    // }
+
+}
+
+fn pattern_syntax() {
+
 }
